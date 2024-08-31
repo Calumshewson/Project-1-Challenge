@@ -1,4 +1,4 @@
-State,Residential,Commercial,IndustrialÊ,Transportation,"TotalÊb,c"
+ï»¿State,Residential,Commercial,IndustrialÂ ,Transportation,Total
 Alabama,332.9,244.4,774.3,551.6,"1,902.40"
 Alaska,50,55.5,429.8,189,724.1
 Arizona,404.4,337.1,219.5,567.4,"1,526.90"
@@ -51,4 +51,3 @@ West Virginia,153.8,107,383.9,191.7,835.5
 Wisconsin,430.9,363.5,535.1,439.9,"1,768.60"
 Wyoming,50.3,53.7,288.3,104.6,496.2
 United States,"19,534.10","16,545.20","31,049.70","27,632.00","94,773.70"
-,,,,,
