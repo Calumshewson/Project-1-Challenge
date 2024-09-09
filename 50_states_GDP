@@ -1,0 +1,81 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load CSV with structured dtype
+data = np.genfromtxt(
+    'project_data_by_state.csv', delimiter=',', encoding=None, skip_header=1,
+    dtype=[('State', 'U51'), ('GDP', 'f8'), ('EnergyConsumption', 'f8')], filling_values=0
+)
+# Extract arrays
+states = data['State']  # State names
+gdp = data['GDP']  # GDP values
+energy_consumption = data['EnergyConsumption']  # Energy consumption values
+# Print the extracted data
+print(states)
+print(gdp)
+print(energy_consumption)
+
+# Apply a filter: Filter states with GDP > 1000
+
+filter_condition = gdp > 1000
+
+filtered_states = states[filter_condition]
+
+filtered_gdp = gdp[filter_condition]
+
+filtered_energy = energy_consumption[filter_condition]
+
+
+
+
+# Adjust figure size to make the labels readable
+
+fig, ax1 = plt.subplots(figsize=(15, 6))  # Adjust width (15) and height (6) as needed
+
+
+
+
+bar_width = 0.35
+
+index = np.arange(len(filtered_states))
+
+
+
+
+# Plot GDP on primary y-axis
+
+bar1 = ax1.bar(index, filtered_gdp, bar_width, label='GDP (Billion USD)', color='blue')
+
+ax1.set_xlabel('States')
+
+ax1.set_ylabel('GDP (Billion USD)', color='blue')
+
+ax1.tick_params(axis='y', labelcolor='blue')
+
+ax1.set_xticks(index)
+
+ax1.set_xticklabels(filtered_states, rotation=45, ha='right')  # Rotate the labels for better readability
+
+
+
+
+# Create a second y-axis for energy consumption
+
+ax2 = ax1.twinx()  # Instantiate a second axes that shares the same x-axis
+
+bar2 = ax2.bar(index + bar_width, filtered_energy, bar_width, label='Energy Consumption (TWh)', color='orange')
+
+ax2.set_ylabel('Energy Consumption (TWh)', color='orange')
+
+ax2.tick_params(axis='y', labelcolor='orange')
+
+
+
+
+# Add a title and show the plot
+
+plt.title('Filtered State GDP vs Energy Consumption')
+
+fig.tight_layout()  # Ensures everything fits into the figure area
+
+plt.show()
