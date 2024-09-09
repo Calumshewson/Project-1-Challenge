@@ -1,0 +1,74 @@
+import pandas as pd
+gdp_df = pd.read_csv('project_data_by_state.csv')
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import linregress
+import requests
+
+Total_GDP_df = pd.read_csv('project_data_by_state.csv')
+Total_Consumption_df = pd.read_csv('project_data_by_state.csv')
+
+# Merge GDP and energy consumption data
+combined_df = pd.merge(Total_GDP_df, Total_Consumption_df, on='states', how='inner')
+
+# Sort by GDP for better visualization
+combined_df = combined_df.sort_values('2022 Total GDP_x', ascending=False)
+# Select top 10 states by GDP for the filtered view
+top_10_states = combined_df.head(10)
+
+# Create the bar graph
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Set the width of each bar and the positions of the bars
+width = 0.35
+x = np.arange(len(top_10_states))
+
+# Normalize the data for better comparison
+gdp_norm = top_10_states['2022 Total GDP_x'] / top_10_states['2022 Total GDP_x'].max()
+energy_norm = top_10_states['Total Consumption (Trillion BTU) in 2022_x'] / top_10_states['Total Consumption (Trillion BTU) in 2022_x'].max()
+# Create the bars
+ax.bar(x - width/2, gdp_norm, width, label='GDP (Normalized)', color='blue')
+ax.bar(x + width/2, energy_norm, width, label='Energy Consumption (Normalized)', color='red')
+
+# Customize the graph
+ax.set_xlabel('States')
+ax.set_ylabel('Normalized Values')
+ax.set_title('Top 10 States: GDP vs Energy Consumption (Normalized)')
+ax.set_xticks(x)
+ax.set_xticklabels(top_10_states['states'], rotation=45, ha='right')
+ax.legend()
+
+# Add value labels on top of each bar
+for i, v in enumerate(gdp_norm):
+    ax.text(i - width/2, v, f'{v:.2f}', ha='center', va='bottom')
+for i, v in enumerate(energy_norm):
+    ax.text(i + width/2, v, f'{v:.2f}', ha='center', va='bottom')
+
+# Adjust layout and display the graph
+plt.tight_layout()
+plt.show()
+
+# Print correlation between GDP and Energy Consumption
+correlation = combined_df['2022 Total GDP_x'].corr(combined_df['Total Consumption (Trillion BTU) in 2022_x'])
+print(f"Correlation between GDP and Energy Consumption: {correlation:.2f}")
+
+# Linear regression
+slope, intercept, r_value, p_value, std_err = linregress(combined_df['2022 Total GDP_x'], combined_df['Total Consumption (Trillion BTU) in 2022_x'])
+print(f"R-squared: {r_value**2:.2f}")
+print(f"P-value: {p_value:.4f}")
+
+# Scatter plot of GDP vs Energy Consumption
+plt.figure(figsize=(10, 6))
+plt.scatter(combined_df['2022 Total GDP_x'], combined_df['Total Consumption (Trillion BTU) in 2022_x'])
+plt.xlabel('GDP')
+plt.ylabel('Total Energy Consumption')
+plt.title('GDP vs Energy Consumption Scatter Plot')
+
+# Add trend line
+x_trend = np.linspace(combined_df['2022 Total GDP_x'].min(), combined_df['2022 Total GDP_x'].max(), 100)
+y_trend = slope * x_trend + intercept
+plt.plot(x_trend, y_trend, color='red', linestyle='--', label='Trend Line')
+
+plt.legend()
+plt.tight_layout()
+plt.show()
