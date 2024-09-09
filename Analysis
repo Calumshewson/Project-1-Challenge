@@ -1,0 +1,21 @@
+Research Question 1: What is the most prominent form of energy across the U.S.?
+
+	To answer this question, research was performed by the United States Energy Information Administration. Throughout the course of this analysis, datasets were pulled right from the website of that agency. One of those sets contained data on all energy usage across the United States. Upon pulling that csv file a visualization was created to help identify the leading form of energy. The bar graph displayed here accurately depicts natural gas as the leading energy form. Then followed by coal, and nuclear power.
+
+Research Question 2: What state uses the most natural gas?
+
+	Upon learning that natural gas was the leading power form, a separate dataset was pulled to analyze the usage of natural gas across all fifty states. The easiest, and best way to analyze such a dataset was to construct a pie chart. In this way we are able to come to the conclusion that Texas is the number one consumer of natural gas. Texas is then followed up by California and subsequently Florida.
+
+Research Question 3: Which States have the highest Renewable Energy usage?
+
+The states with the highest consumption of Renewable Energy are California, Texas, Washington State, Iowa, and Florida. Within this group, California, Texas and Florida are among the nation’s highest in population, largely explaining their presence within the top five of this category. The outliers, Washington State and Iowa, boast the nation’s highest percentage of their total energy coming from Hydroelectric power and Wind energy respectively. 
+
+Research Question 4: Which States have the highest Nonrenewable Energy usage?
+
+Within the Nonrenewable Energy sector, Texas is a major consumer in both Natural Gas and Petroleum. This is largely due to its position as the nation’s leading energy producer. For similar reasons, Louisiana is largely overrepresented in Natural Gas and Petroleum when compared to their population, as the Gulf Coast region accounts for approximately 50% of the nation's fossil fuel production. Illinois is the country’s leading Nuclear energy consumer. This is due to its position as the nation’s leading Nuclear producer, with 11 reactors spread among 6 locations across the state. 
+
+Research Question 5: How is energy consumption distributed between sectors within each state?
+
+The bar graph and heatmap both illustrate energy consumption by sector across states, highlighting key trends and differences. The heatmap provides a more detailed numerical view, reinforcing the same trends seen in the bar graph. Texas stands out as the state with the highest overall energy consumption, particularly in the industrial and transportation sectors with California right behind. States like Florida and Louisiana have a notable balance between sectors, with Florida showing significant residential and transportation consumption. Overall, the transportation and industrial sectors show the most variability across states, with more even distribution in the residential and commercial sectors. This data suggests that energy consumption patterns are closely linked to a state’s industrial activity, population, and transportation networks. ( All data is from the year 2022).
+
+Research Question 6:
